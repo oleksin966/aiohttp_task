@@ -1,0 +1,15 @@
+.git
+.gitignore
+
+venv
+
+.env.sample
+.pytest_cache
+**/__pycache__/
+postgres-data/
+
+Dockerfile
+docker-compose.yaml
+aoihttp.sql
+
+README.md

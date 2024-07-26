@@ -1,0 +1,8 @@
+aiohttp==3.9.5
+aiopg==1.4.0
+peewee==3.17.6
+peewee_async==0.10.0
+pydantic_settings==2.3.4
+psycopg2==2.9.9
+pytest_aiohttp==1.0.5
+watchgod==0.8.2

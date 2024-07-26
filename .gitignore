@@ -1,0 +1,9 @@
+venv
+temp.txt
+.env
+app.log
+aiohttp.sql
+
+postgres-data/
+**/__pycache__/
+**/.pytest_cache/

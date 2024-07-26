@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: "postgresql"
+    image: postgres:16
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: "${db_user}"
+      POSTGRES_PASSWORD: "${db_password}"
+      POSTGRES_DB: "${db_name}"
+    ports:
+      - "${db_port}:${db_port}" 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    container_name: "aiohttp"
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "${port}:${port}"
+    depends_on:
+      - db
+    volumes:
+      - .:/project
+
+  test:
+    container_name: "pytest"
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: ["pytest", "test/"]
+
+volumes:
+  postgres_data:
+
+
+
